@@ -19,13 +19,15 @@
         "symfony/runtime": "7.0.*",
         "symfony/security-bundle": "7.0.*",
         "symfony/twig-bundle": "7.0.*",
+        "symfony/validator": "7.0.*",
         "symfony/yaml": "7.0.*"
     },
     "config": {
         "allow-plugins": {
             "php-http/discovery": true,
             "symfony/flex": true,
-            "symfony/runtime": true
+            "symfony/runtime": true,
+            "phpro/grumphp": true
         },
         "sort-packages": true
     },
@@ -54,6 +56,7 @@
             "cache:clear": "symfony-cmd",
             "assets:install %PUBLIC_DIR%": "symfony-cmd"
         },
+        "analyse" : "vendor/bin/phpstan analyse -l 6 src",
         "post-install-cmd": [
             "@auto-scripts"
         ],
@@ -71,10 +74,14 @@
         }
     },
     "require-dev": {
+        "phpro/grumphp": "^2.4",
+        "phpstan/phpstan": "^1.10",
         "phpunit/phpunit": "^9.5",
         "symfony/browser-kit": "7.0.*",
         "symfony/css-selector": "7.0.*",
         "symfony/maker-bundle": "^1.52",
-        "symfony/phpunit-bridge": "^7.0"
+        "symfony/phpunit-bridge": "^7.0",
+        "symfony/stopwatch": "7.0.*",
+        "symfony/web-profiler-bundle": "7.0.*"
     }
 }

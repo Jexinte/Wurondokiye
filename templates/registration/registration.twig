@@ -1,0 +1,29 @@
+{% extends 'layout.twig' %}
+
+{% block title %} <title> Inscription |{{ parent() }} </title> {% endblock %}
+
+{% block icon_img %} <link rel="icon" type="image/jpg" href="assets/img/logo/logo.jpg"/> {% endblock %}
+
+{% block css_page %}
+    <link rel="stylesheet" href="/assets/css/registration.css">
+{% endblock %}
+
+{% block content %}
+    <header>
+        <nav>
+            <a href="#"><i class="fa-solid fa-key"></i></a>
+        </nav>
+    </header>
+<section class="container-fluid registration">
+    <div class="row">
+        <div class="banner">
+            <img src="assets/img/logo/logo.jpg" alt="logo">
+        </div>
+        <div class="col-xs-12 col-xs-12 col-lg-12 col-xl-12">
+            <h1 class="text-center h1">Inscription</h1>
+            {{ form_start(form,{'action': path('registrationPost')},{'attr': {'class':'form'}}) }}
+            {{ form_end(form) }}
+          </div>
+    </div>
+</section>
+{% endblock %}
