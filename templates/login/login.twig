@@ -1,0 +1,29 @@
+{% extends 'layout.twig' %}
+
+{% block title %} <title> Connexion |{{ parent() }} </title> {% endblock %}
+
+{% block icon_img %} <link rel="icon" type="image/png" href="public/favicon.ico"/> {% endblock %}
+
+{% block css_page %}
+    <link rel="stylesheet" href="/assets/css/login.css">
+{% endblock %}
+
+{% block content %}
+    <header>
+        <nav>
+            <a href="{{ path('registrationGet') }}"><i class="fa-solid fa-user-plus"></i></a>
+        </nav>
+    </header>
+    <section class="container-fluid login">
+        <div class="row">
+            <div class="banner">
+                <img src="assets/img/logo/logo.jpg" alt="logo">
+            </div>
+            <div class="col-xs-12 col-xs-12 col-lg-12 col-xl-12">
+                <h1 class="text-center h1">Connexion</h1>
+                {{ form_start(form,{'action': path('login')},{'attr': {'class':'form'}}) }}
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </section>
+{% endblock %}

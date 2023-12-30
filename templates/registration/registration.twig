@@ -2,7 +2,7 @@
 
 {% block title %} <title> Inscription |{{ parent() }} </title> {% endblock %}
 
-{% block icon_img %} <link rel="icon" type="image/jpg" href="assets/img/logo/logo.jpg"/> {% endblock %}
+{% block icon_img %} <link rel="icon" type="image/png" href="public/favicon.ico"/> {% endblock %}
 
 {% block css_page %}
     <link rel="stylesheet" href="/assets/css/registration.css">
@@ -11,7 +11,7 @@
 {% block content %}
     <header>
         <nav>
-            <a href="#"><i class="fa-solid fa-key"></i></a>
+            <a href="{{ path('login') }}"><i class="fa-solid fa-key"></i></a>
         </nav>
     </header>
 <section class="container-fluid registration">
