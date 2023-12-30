@@ -1,0 +1,55 @@
+
+
+header nav {
+    display: flex;
+    justify-content: end;
+}
+header nav a {
+    padding-right: 2em;
+}
+.banner {
+    display: flex;
+    justify-content: center;
+    margin-block: 8em;
+}
+
+.banner img {
+    width: 50%;
+    border-radius: 50%;
+}
+
+.login h1{
+    font-weight: bolder;
+    position: relative;
+}
+
+.login h1::after{
+    content: '';
+    position: relative;
+    display: block;
+    width: 175px;
+    margin: 0.3em auto;
+    border-bottom: 0.1em solid #2AE0EC;
+    border-width: 0.12em;
+}
+
+#login_form{
+    display: flex;
+    flex-direction: column;
+    gap: 2.5em;
+}
+#login_form div:nth-child(n){
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding-top: .5em;
+
+}
+
+#login_form :nth-child(n) > ul {
+    position: absolute;
+    bottom: -3em;
+    left: 0;
+    padding: 0;
+}
+
