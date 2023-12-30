@@ -6,9 +6,14 @@ use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
-
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
+#[UniqueEntity('username','Oops! Ce nom d\'utilisateur est déjà pris, veuillez en choisir un autre !'
+)]
+#[UniqueEntity('email','Oops! Cette adresse email est déjà prise, veuillez en définir une autre !'
+)]
 class User implements  UserInterface,PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -17,12 +22,25 @@ class User implements  UserInterface,PasswordAuthenticatedUserInterface
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message:'Ce champ ne peut être vide !')]
+    #[Assert\Regex(
+        pattern: '/^[A-Z][a-z]{0,9}$/',
+        message: 'Oops! Le nom utilisateur doit commencer par une lettre majuscule et ne doit pas excéder 10 caractères !',
+        match: true
+    )]
     private ?string $username = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\Regex(
+        pattern: '/^[a-z0-9.-]+@[a-z0-9.-]{2,}\.[a-z]{2,4}$/',
+        message: 'Oops! Le format de votre saisie est incorrect,merci de suivre le format requis : nomadressemail@domaine.extension',
+        match: true,
+    )]
+    #[Assert\NotBlank(message:'Ce champ ne peut être vide !')]
     private ?string $email = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message:'Ce champ ne peut être vide !')]
     private ?string $password = null;
 
     #[ORM\Column(type:'json')]
