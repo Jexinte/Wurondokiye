@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: CalorieRepository::class)]
+#[\AllowDynamicProperties]
 class Calorie
 {
     #[ORM\Id]
