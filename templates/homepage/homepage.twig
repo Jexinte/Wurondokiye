@@ -1,0 +1,31 @@
+{% extends 'layout.twig' %}
+
+{% block title %} <title> Accueil |{{ parent() }} </title> {% endblock %}
+
+{% block icon_img %} <link rel="icon" type="image/png" href="public/favicon.ico"/> {% endblock %}
+
+{% block css_page %}
+    <link rel="stylesheet" href="/assets/css/homepage.css">
+{% endblock %}
+
+{% block content %}
+    <header>
+        <nav>
+            <a href="{{ path('homepage') }}"><img src="assets/img/logo/logo.jpg" alt="logo" height="60"></a>
+        </nav>
+    </header>
+    <section class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12" id="parent">
+                <a href="#" id="calories">
+                   <h2>Calories</h2>
+                    <p>Ajoutez des données sur les calories de la veille ou regardez la progression des calories absorbées dans le temps</p>
+            </a>
+                <a href="#" id="weight">
+                   <h2>Poids</h2>
+                    <p>Ajoutez des données sur le poids enregistré le matin ou regardez la progression du poids perdu dans le temps</p>
+            </a>
+        </div>
+        </div>
+    </section>
+{% endblock %}
