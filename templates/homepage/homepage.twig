@@ -16,8 +16,14 @@
     </header>
     <section class="container-fluid">
         <div class="row">
+            {% for message in app.flashes('success') %}
+                <div class="flash-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
+
             <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12" id="parent">
-                <a href="#" id="calories">
+                <a href="{{ path('calorieGet') }}" id="calories">
                    <h2>Calories</h2>
                     <p>Ajoutez des données sur les calories de la veille ou regardez la progression des calories absorbées dans le temps</p>
             </a>

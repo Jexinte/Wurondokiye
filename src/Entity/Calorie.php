@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\CalorieRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: CalorieRepository::class)]
 class Calorie
@@ -15,9 +16,12 @@ class Calorie
     private ?int $id = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    #[Assert\NotNull(message: 'Veuillez sélectionnez une date !')]
     private ?\DateTimeInterface $date = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank(message: 'Veuillez spécifiez le nombre de calories ingérées la veille !')]
+    #[Assert\Range(notInRangeMessage: 'Le nombre de calories ingérées ne peut être à 0 et il ne peut excéder 2500 calories !',min:1, max: 2500)]
     private ?float $totalCalories = null;
 
     public function getId(): ?int
@@ -30,7 +34,7 @@ class Calorie
         return $this->date;
     }
 
-    public function setDate(\DateTimeInterface $date): static
+    public function setDate(?\DateTimeInterface $date): static
     {
         $this->date = $date;
 
