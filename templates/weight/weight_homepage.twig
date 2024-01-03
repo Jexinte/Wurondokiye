@@ -1,0 +1,33 @@
+{% extends 'layout.twig' %}
+
+{% block title %} <title> Accueil Poids |{{ parent() }} </title> {% endblock %}
+
+{% block icon_img %} <link rel="icon" type="image/png" href="public/favicon.ico"/> {% endblock %}
+
+{% block css_page %}
+    <link rel="stylesheet" href="/assets/css/weightHomepage.css">
+{% endblock %}
+
+{% block content %}
+    <header>
+        <nav>
+            <a href="{{ path('homepage') }}"><img src="assets/img/logo/logo.jpg" alt="logo" height="60"></a>
+            <a href="{{ path('logout') }}"><i class="fa-solid fa-right-from-bracket"></i></a>
+        </nav>
+    </header>
+    <section class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12" id="parent">
+
+                <a href="{{ path('addWeightGet') }}" id="add_weight">
+                    <h2>Ajoutez poids</h2>
+                    <p>Via un formulaire ajoutez le poids du matin</p>
+                </a>
+                <a href="{{ path('weightGraph') }}" id="weight">
+                    <h2>Graphique poids</h2>
+                    <p>Permet de voir les données des poids sous forme de graphique grâce à Chart.js</p>
+                </a>
+            </div>
+        </div>
+    </section>
+{% endblock %}

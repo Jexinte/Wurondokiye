@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Weight;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -21,5 +22,12 @@ class WeightRepository extends ServiceEntityRepository
         parent::__construct($registry, Weight::class);
     }
 
+    /**
+     * @return EntityManagerInterface
+     */
+    public function getEm(): EntityManagerInterface
+    {
+        return $this->_em;
+    }
 
 }

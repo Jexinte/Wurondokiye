@@ -1,0 +1,64 @@
+{% extends 'layout.twig' %}
+
+{% block title %} <title> Ajoutez des calories |{{ parent() }} </title> {% endblock %}
+
+{% block icon_img %} <link rel="icon" type="image/png" href="public/favicon.ico"/> {% endblock %}
+
+{% block css_page %}
+    <link rel="stylesheet" href="/assets/css/calorieGraph.css">
+{% endblock %}
+
+{% block content %}
+    <header>
+        <nav>
+            <a href="{{ path('homepage') }}"><i class="fa-solid fa-arrow-left"></i></a>
+        </nav>
+    </header>
+
+    <section class="container-fluid" id="calories_graph">
+        <div class="banner">
+            <img src="assets/img/addCalories/caloriesBanner.jpg" alt="banner">
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                <div>
+                    <canvas id="myChart"></canvas>
+                </div>
+
+
+
+            </div>
+        </div>
+    </section>
+    {% block javascript %}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+            let calories = []
+            let dates = []
+            {% for calorie in calories %}
+            calories.push({{calorie.totalCalories}})
+            dates.push('{{ calorie.dateFr }}')
+            {% endfor %}
+
+            const ctx = document.getElementById('myChart');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: dates,
+                    datasets: [{
+                        label: 'Calories',
+                        data: calories,
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        </script>
+    {% endblock %}
+{% endblock %}
