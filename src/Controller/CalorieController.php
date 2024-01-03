@@ -40,7 +40,7 @@ class CalorieController extends AbstractController
             $calorieRepository->getEm()->persist($calorie);
             $calorieRepository->getEm()->flush();
             $this->addFlash('success', 'L\'enregistrement des calories à bien été pris en compte !');
-//            return $this->redirectToRoute('homepage');
+            return $this->redirectToRoute('homepage');
         }
         return new Response($this->render('calorie/add_calories.twig', [
             'form' => $form

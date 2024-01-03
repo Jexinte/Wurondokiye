@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\WeightRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: WeightRepository::class)]
 class Weight
@@ -15,9 +16,12 @@ class Weight
     private ?int $id = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    #[Assert\NotNull(message:'Veuillez sélectionner une date !')]
     private ?\DateTimeInterface $date = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank(message: 'Ce champ ne peut-être vide !')]
+    #[Assert\Range(notInRangeMessage: 'Oops! Seuls les valeurs entre 1 et 2500 sont acceptées !',  min: 1, max: 2500)]
     private ?float $weight = null;
 
     public function getId(): ?int
@@ -30,7 +34,7 @@ class Weight
         return $this->date;
     }
 
-    public function setDate(\DateTimeInterface $date): static
+    public function setDate(?\DateTimeInterface $date): static
     {
         $this->date = $date;
 

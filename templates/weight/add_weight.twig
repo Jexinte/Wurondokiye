@@ -1,0 +1,30 @@
+{% extends 'layout.twig' %}
+
+{% block title %} <title> Ajouter poids |{{ parent() }} </title> {% endblock %}
+
+{% block icon_img %} <link rel="icon" type="image/png" href="public/favicon.ico"/> {% endblock %}
+
+{% block css_page %}
+    <link rel="stylesheet" href="/assets/css/addWeight.css">
+{% endblock %}
+
+{% block content %}
+    <header>
+        <nav>
+            <a href="{{ path('homepage') }}"><i class="fa-solid fa-arrow-left"></i></a>
+        </nav>
+    </header>
+
+    <section class="container-fluid" id="add_weight">
+        <div class="banner">
+            <img src="assets/img/addCalories/caloriesBanner.jpg" alt="banner">
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                <h1 class="text-center">Ajouter un poids </h1>
+                {{ form_start(form,{'action' : path('addWeightPost')}) }}
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </section>
+{% endblock %}
