@@ -2,11 +2,12 @@
 
 namespace App\Entity;
 
+use AllowDynamicProperties;
 use App\Repository\WeightRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-
+#[AllowDynamicProperties]
 #[ORM\Entity(repositoryClass: WeightRepository::class)]
 class Weight
 {
