@@ -1,3 +1,9 @@
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding-inline: 1.5em;
+}
+
 #parent {
     display: flex;
     justify-content: center;

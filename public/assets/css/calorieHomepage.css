@@ -4,7 +4,6 @@ nav {
     padding-inline: 1.5em;
 }
 
-
 #parent {
     display: flex;
     justify-content: center;
@@ -12,7 +11,7 @@ nav {
     align-items: center;
 }
 
-#calories{
+#add_calories{
     border-top: 1.1em solid #44F6EC;
     border-radius: 49px;
     box-shadow: 5px 5px 10px rgba(0,0,0,.5);
@@ -24,7 +23,7 @@ nav {
     text-decoration: none;
 }
 
-#calories p , #weight p {
+#add_calories p , #weight p {
     color: #8b7b7b;
 }
 #weight{
@@ -39,6 +38,6 @@ nav {
     text-decoration: none;
 }
 
-#weight h2 , #calories h2{
+#weight h2 , #add_calories h2{
     color: black;
 }
