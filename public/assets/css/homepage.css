@@ -42,3 +42,12 @@ nav {
 #weight h2 , #calories h2{
     color: black;
 }
+
+.flash-success{
+    background: lightgreen;
+    padding: 2em;
+    margin: 8em auto;
+    width: 80%;
+    color: white;
+    border-radius: 10px;
+}

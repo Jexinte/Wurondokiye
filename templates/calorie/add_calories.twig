@@ -5,7 +5,7 @@
 {% block icon_img %} <link rel="icon" type="image/png" href="public/favicon.ico"/> {% endblock %}
 
 {% block css_page %}
-    <link rel="stylesheet" href="/assets/css/addCalories.css">
+    <link rel="stylesheet" href="/assets/css/addCalories.css{{ _self.commonContent() }}">
 {% endblock %}
 
 {% block content %}
