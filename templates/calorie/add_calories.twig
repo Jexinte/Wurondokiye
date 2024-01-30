@@ -1,11 +1,11 @@
 {% extends 'layout.twig' %}
 
-{% block title %} <title> Ajoutez des calories |{{ parent() }} </title> {% endblock %}
+{% block title %} <title> Ajoutez des calories | {{ parent() }} </title> {% endblock %}
 
 {% block icon_img %} <link rel="icon" type="image/png" href="public/favicon.ico"/> {% endblock %}
 
 {% block css_page %}
-    <link rel="stylesheet" href="/assets/css/addCalories.css{{ _self.commonContent() }}">
+    <link rel="stylesheet" href="/assets/css/addCalories.css{{ _self.cssVersionning() }}">
 {% endblock %}
 
 {% block content %}

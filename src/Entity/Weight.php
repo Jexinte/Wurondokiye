@@ -6,6 +6,7 @@ use AllowDynamicProperties;
 use App\Repository\WeightRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use IntlDateFormatter;
 use Symfony\Component\Validator\Constraints as Assert;
 #[AllowDynamicProperties]
 #[ORM\Entity(repositoryClass: WeightRepository::class)]
@@ -38,9 +39,14 @@ class Weight
     public function setDate(?\DateTimeInterface $date): static
     {
         $this->date = $date;
-
         return $this;
     }
+
+    //TODO Il faudra ajuster la logique métier ici ainsi je n'aurais pas utiliser la création de propriété dynamique
+//    public function setFrenchDate(IntlDateFormatter $dateFormatter)
+//    {
+//        $dateFormatter->format($this->getDate());
+//    }
 
     public function getWeight(): ?float
     {

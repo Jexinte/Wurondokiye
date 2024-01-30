@@ -50,7 +50,7 @@ class WeightController extends AbstractController
             $weight = $form->getData();
             $weightRepository->getEm()->persist($weight);
             $weightRepository->getEm()->flush();
-            $this->redirectToRoute('weightGet');
+            return $this->redirectToRoute('weightGet');
         }
         return new Response($this->render('weight/add_weight.twig',[
             'form' => $form
