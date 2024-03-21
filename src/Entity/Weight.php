@@ -42,6 +42,7 @@ class Weight
         return $this;
     }
 
+
     public function getWeight(): ?float
     {
         return $this->weight;

@@ -23,12 +23,12 @@ security:
       logout: ~
 
   access_control:
-        - { path: ^/login ,roles: PUBLIC_ACCESS }
-        - { path: ^/registration, roles: PUBLIC_ACCESS }
+        - { path: ^/connexion ,roles: PUBLIC_ACCESS }
+        - { path: ^/inscription, roles: PUBLIC_ACCESS }
         - { path: ^/, roles: ROLE_ADMIN }
-        - { path: ^/weight, roles: ROLE_ADMIN }
-        - { path: ^/add, roles: ROLE_ADMIN }
-        - { path: ^/calorie, roles: ROLE_ADMIN }
+#        - { path: ^/poids, roles: ROLE_ADMIN }
+        - { path: ^/ajouter, roles: ROLE_ADMIN }
+        - { path: ^/accueil, roles: ROLE_ADMIN }
 
 when@test:
   security:

@@ -12,14 +12,14 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class CalorieController extends AbstractController
 {
-    #[Route('/calorie-homepage', name: 'calorieGet', methods: ['GET'])]
+    #[Route('/accueil-calories', name: 'calorieGet', methods: ['GET'])]
     public function calorieGet(): Response
     {
         return new Response($this->render('calorie/calorie_homepage.twig', [
         ]));
     }
 
-    #[Route('/add-calories', name: 'addCaloriesGet', methods: ['GET'])]
+    #[Route('/ajouter-calories', name: 'addCaloriesGet', methods: ['GET'])]
     public function addCaloriesGet(): Response
     {
         $form = $this->createForm(CalorieType::class);
@@ -29,7 +29,7 @@ class CalorieController extends AbstractController
     }
 
 
-    #[Route('/add-calories', name: 'addCaloriesPost', methods: ['POST'])]
+    #[Route('/ajouter-calories', name: 'addCaloriesPost', methods: ['POST'])]
     public function addCaloriesPost(Request $request, CalorieRepository $calorieRepository): Response
     {
         $form = $this->createForm(CalorieType::class);
@@ -47,7 +47,7 @@ class CalorieController extends AbstractController
         ]), 400);
     }
 
-    #[Route('/calorie-graph', name: 'caloriesGraphGet', methods: ['GET'])]
+    #[Route('/graphique-de-calories', name: 'caloriesGraphGet', methods: ['GET'])]
     public function caloriesGraphGet(CalorieRepository $calorieRepository,IntlDateFormatter $dateFormatter): Response
     {
         foreach($calorieRepository->findAll() as $k => $calorie)

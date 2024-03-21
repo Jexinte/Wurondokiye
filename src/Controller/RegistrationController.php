@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class RegistrationController extends AbstractController
 {
-    #[Route('/registration', name: 'registrationGet', methods: ['GET'])]
+    #[Route('/inscription', name: 'registrationGet', methods: ['GET'])]
     public function registrationGet(): Response
     {
         $form = $this->createForm(RegistrationType::class);
@@ -21,7 +21,7 @@ class RegistrationController extends AbstractController
         ]));
     }
 
-    #[Route('/registration', name: 'registrationPost', methods: ['POST'])]
+    #[Route('/inscription', name: 'registrationPost', methods: ['POST'])]
     public function registrationPost(Request $request, UserRepository $userRepository, UserPasswordHasherInterface $passwordHasher): Response
     {
         $form = $this->createForm(RegistrationType::class);
