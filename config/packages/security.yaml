@@ -26,7 +26,6 @@ security:
         - { path: ^/connexion ,roles: PUBLIC_ACCESS }
         - { path: ^/inscription, roles: PUBLIC_ACCESS }
         - { path: ^/, roles: ROLE_ADMIN }
-#        - { path: ^/poids, roles: ROLE_ADMIN }
         - { path: ^/ajouter, roles: ROLE_ADMIN }
         - { path: ^/accueil, roles: ROLE_ADMIN }
 

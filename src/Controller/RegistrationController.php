@@ -16,9 +16,9 @@ class RegistrationController extends AbstractController
     public function registrationGet(): Response
     {
         $form = $this->createForm(RegistrationType::class);
-        return new Response($this->render('registration/registration.twig', [
+        return $this->render('registration/registration.twig', [
             'form' => $form
-        ]));
+        ]);
     }
 
     #[Route('/inscription', name: 'registrationPost', methods: ['POST'])]
@@ -39,9 +39,9 @@ class RegistrationController extends AbstractController
 
             $this->redirectToRoute('login');
         }
-        return new Response($this->render('registration/registration.twig', [
+        return $this->render('registration/registration.twig', [
             'form' => $form
-        ]), Response::HTTP_BAD_REQUEST);
+        ]);
     }
 
 

@@ -15,7 +15,7 @@ class WeightController extends AbstractController
     #[Route('/accueil-poids', name: 'weightGet',methods: ['GET'])]
     public function weightGet(): Response
     {
-        return new Response($this->render('weight/weight_homepage.twig'));
+        return $this->render('weight/weight_homepage.twig');
     }
     #[Route('/ajouter-poids', name: 'addWeightGet',methods: ['GET'])]
     public function weightPost(): Response
@@ -27,7 +27,7 @@ class WeightController extends AbstractController
         ]);
     }
 
-    #[Route('/graphique-de-poids', name: 'weightGraph',methods: ['GET'])]
+    #[Route('/graphique-de-poids', name: 'weightsGraph',methods: ['GET'])]
     public function weightGraphGet(WeightRepository $weightRepository,IntlDateFormatter $dateFormatter): Response
     {
         foreach($weightRepository->findAll() as $k => $calorie)
@@ -52,7 +52,7 @@ class WeightController extends AbstractController
             $weightRepository->getEm()->persist($weight);
             $weightRepository->getEm()->flush();
             $this->addFlash('success', 'L\'enregistrement du poids à bien été pris en compte !');
-            return $this->redirectToRoute('weightGet');
+            return $this->redirectToRoute('weightsGraph');
 
         }
         return $this->render('weight/add_weight.twig',[

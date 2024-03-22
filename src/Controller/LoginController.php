@@ -18,17 +18,17 @@ class LoginController extends AbstractController
         $form = $this->createForm(LoginType::class);
         $error = $authenticationUtils->getLastAuthenticationError();
         $response = new Response();
-        $statusCode = $response->getStatusCode();
+        $statusCode = $response->setStatusCode($response::HTTP_OK);
         if ($error) {
             $error = new FormError('Oops! Identifiant ou mot de passe invalide !');
             $username = $form->get('username');
             $username->addError($error);
-            $statusCode = Response::HTTP_BAD_REQUEST;
+            $statusCode = $response->setStatusCode($response::HTTP_BAD_REQUEST);
             $this->redirectToRoute('homepage');
         }
-        return new Response($this->render('login/login.twig', [
+        return $this->render('login/login.twig', [
             'form' => $form,
-        ]), $statusCode);
+        ],$statusCode);
     }
 
 }

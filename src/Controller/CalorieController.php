@@ -15,17 +15,17 @@ class CalorieController extends AbstractController
     #[Route('/accueil-calories', name: 'calorieGet', methods: ['GET'])]
     public function calorieGet(): Response
     {
-        return new Response($this->render('calorie/calorie_homepage.twig', [
-        ]));
+        return $this->render('calorie/calorie_homepage.twig', [
+        ]);
     }
 
     #[Route('/ajouter-calories', name: 'addCaloriesGet', methods: ['GET'])]
     public function addCaloriesGet(): Response
     {
         $form = $this->createForm(CalorieType::class);
-        return new Response($this->render('calorie/add_calories.twig', [
+        return $this->render('calorie/add_calories.twig', [
             'form' => $form
-        ]));
+        ]);
     }
 
 
@@ -33,6 +33,7 @@ class CalorieController extends AbstractController
     public function addCaloriesPost(Request $request, CalorieRepository $calorieRepository): Response
     {
         $form = $this->createForm(CalorieType::class);
+        $response = new Response();
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -40,22 +41,22 @@ class CalorieController extends AbstractController
             $calorieRepository->getEm()->persist($calorie);
             $calorieRepository->getEm()->flush();
             $this->addFlash('success', 'L\'enregistrement des calories à bien été pris en compte !');
-            return $this->redirectToRoute('homepage');
+            return $this->redirectToRoute('caloriesGraph');
         }
-        return new Response($this->render('calorie/add_calories.twig', [
+        return $this->render('calorie/add_calories.twig', [
             'form' => $form
-        ]), 400);
+        ],$response->setStatusCode($response::HTTP_BAD_REQUEST));
     }
 
-    #[Route('/graphique-de-calories', name: 'caloriesGraphGet', methods: ['GET'])]
+    #[Route('/graphique-de-calories', name: 'caloriesGraph', methods: ['GET'])]
     public function caloriesGraphGet(CalorieRepository $calorieRepository,IntlDateFormatter $dateFormatter): Response
     {
         foreach($calorieRepository->findAll() as $k => $calorie)
         {
             $calorieRepository->findAll()[$k]->dateFr = ucfirst($dateFormatter->format($calorie->getDate()));
         }
-        return new Response($this->render('calorie/calorie_graph.twig', [
+        return $this->render('calorie/calorie_graph.twig', [
             'calories' => $calorieRepository->findAll()
-        ]));
+        ]);
     }
 }

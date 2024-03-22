@@ -16,3 +16,8 @@ nav a {
 #weight_graph {
     padding-inline: 0;
 }
+
+#weight_graph h1 {
+    text-decoration: underline;
+    text-decoration-color: indianred;
+}

@@ -16,3 +16,7 @@ nav a {
 #calories_graph {
     padding-inline: 0;
 }
+#calories_graph h1 {
+    text-decoration: underline;
+    text-decoration-color: indianred;
+}
