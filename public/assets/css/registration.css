@@ -32,7 +32,10 @@ header nav a {
     border-bottom: 0.1em solid #2AE0EC;
     border-width: 0.12em;
 }
-
+body .registration {
+    width: 80%;
+    margin: 0 auto;
+}
 #registration_form{
     display: flex;
     flex-direction: column;

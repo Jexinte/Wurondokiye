@@ -12,22 +12,22 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class WeightController extends AbstractController
 {
-    #[Route('/weight-homepage', name: 'weightGet',methods: ['GET'])]
+    #[Route('/accueil-poids', name: 'weightGet',methods: ['GET'])]
     public function weightGet(): Response
     {
-        return new Response($this->render('weight/weight_homepage.twig'));
+        return $this->render('weight/weight_homepage.twig');
     }
-    #[Route('/add-weight', name: 'addWeightGet',methods: ['GET'])]
+    #[Route('/ajouter-poids', name: 'addWeightGet',methods: ['GET'])]
     public function weightPost(): Response
     {
         $form = $this->createForm(WeightType::class);
 
-        return new Response($this->render('weight/add_weight.twig',[
+        return $this->render('weight/add_weight.twig',[
             'form' => $form
-        ]),);
+        ]);
     }
 
-    #[Route('/weight-graph', name: 'weightGraph',methods: ['GET'])]
+    #[Route('/graphique-de-poids', name: 'weightsGraph',methods: ['GET'])]
     public function weightGraphGet(WeightRepository $weightRepository,IntlDateFormatter $dateFormatter): Response
     {
         foreach($weightRepository->findAll() as $k => $calorie)
@@ -35,14 +35,15 @@ class WeightController extends AbstractController
             $weightRepository->findAll()[$k]->dateFr = ucfirst($dateFormatter->format($calorie->getDate()));
         }
 
-        return new Response($this->render('weight/weight_graph.twig',[
+        return $this->render('weight/weight_graph.twig',[
             'weights' => $weightRepository->findAll()
-        ]),);
+        ]);
     }
-    #[Route('/add-weight', name: 'addWeightPost',methods: ['POST'])]
+    #[Route('/ajouter-un-poids', name: 'addWeightPost',methods: ['POST'])]
     public function addWeightPost(Request $request , WeightRepository $weightRepository): Response
     {
         $form = $this->createForm(WeightType::class);
+        $response = new Response();
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid())
@@ -50,11 +51,15 @@ class WeightController extends AbstractController
             $weight = $form->getData();
             $weightRepository->getEm()->persist($weight);
             $weightRepository->getEm()->flush();
-            return $this->redirectToRoute('weightGet');
+
+            $this->addFlash('success', 'L\'enregistrement du poids à bien été pris en compte !');
+            return $this->redirectToRoute('weightsGraph');
+
+
         }
-        return new Response($this->render('weight/add_weight.twig',[
+        return $this->render('weight/add_weight.twig',[
             'form' => $form
-        ]),Response::HTTP_BAD_REQUEST);
+        ],$response->setStatusCode(Response::HTTP_BAD_REQUEST));
     }
 
 

@@ -42,11 +42,7 @@ class Weight
         return $this;
     }
 
-    //TODO Il faudra ajuster la logique métier ici ainsi je n'aurais pas utiliser la création de propriété dynamique
-//    public function setFrenchDate(IntlDateFormatter $dateFormatter)
-//    {
-//        $dateFormatter->format($this->getDate());
-//    }
+
 
     public function getWeight(): ?float
     {

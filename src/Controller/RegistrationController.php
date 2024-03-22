@@ -12,16 +12,16 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class RegistrationController extends AbstractController
 {
-    #[Route('/registration', name: 'registrationGet', methods: ['GET'])]
+    #[Route('/inscription', name: 'registrationGet', methods: ['GET'])]
     public function registrationGet(): Response
     {
         $form = $this->createForm(RegistrationType::class);
-        return new Response($this->render('registration/registration.twig', [
+        return $this->render('registration/registration.twig', [
             'form' => $form
-        ]));
+        ]);
     }
 
-    #[Route('/registration', name: 'registrationPost', methods: ['POST'])]
+    #[Route('/inscription', name: 'registrationPost', methods: ['POST'])]
     public function registrationPost(Request $request, UserRepository $userRepository, UserPasswordHasherInterface $passwordHasher): Response
     {
         $form = $this->createForm(RegistrationType::class);
@@ -39,9 +39,9 @@ class RegistrationController extends AbstractController
 
             $this->redirectToRoute('login');
         }
-        return new Response($this->render('registration/registration.twig', [
+        return $this->render('registration/registration.twig', [
             'form' => $form
-        ]), Response::HTTP_BAD_REQUEST);
+        ]);
     }
 
 
