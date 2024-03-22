@@ -2,10 +2,12 @@
 
 {% block title %} <title> Accueil - Poids | {{ parent() }} </title> {% endblock %}
 
+
 {% block icon_img %} <link rel="icon" type="image/png" href="favicon.ico"/> {% endblock %}
 
 {% block css_page %}
-    <link rel="stylesheet" href="/assets/css/weight-homepage.css">
+    <link rel="stylesheet" href="/assets/css/weight-homepage.css{{ _self.cssVersionning() }}">
+
 {% endblock %}
 
 {% block content %}

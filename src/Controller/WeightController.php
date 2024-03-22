@@ -51,8 +51,10 @@ class WeightController extends AbstractController
             $weight = $form->getData();
             $weightRepository->getEm()->persist($weight);
             $weightRepository->getEm()->flush();
+
             $this->addFlash('success', 'L\'enregistrement du poids à bien été pris en compte !');
             return $this->redirectToRoute('weightsGraph');
+
 
         }
         return $this->render('weight/add_weight.twig',[

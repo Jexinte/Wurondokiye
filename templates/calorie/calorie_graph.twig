@@ -1,11 +1,15 @@
 {% extends 'layout.twig' %}
 
+
 {% block title %} <title> Graphique des calories | {{ parent() }} </title> {% endblock %}
+
 
 {% block icon_img %} <link rel="icon" type="image/png" href="favicon.ico"/> {% endblock %}
 
 {% block css_page %}
-    <link rel="stylesheet" href="/assets/css/calorie-graph.css">
+
+    <link rel="stylesheet" href="/assets/css/calorie-graph.css{{ _self.cssVersionning }}">
+
 {% endblock %}
 
 {% block content %}
