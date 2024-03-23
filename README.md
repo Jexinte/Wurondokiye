@@ -1,1 +1,1 @@
-A simple project to record weightloss data and see them with Chartjs
+It's a simple project that lets you track your weight loss by first entering calories and then weight in their dedicated sections. Progress can then be tracked via a graph provided by chartJS (both calories and weight have their own graph in their dedicated section).
