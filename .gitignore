@@ -14,8 +14,10 @@
 /phpunit.xml
 ###< symfony/phpunit-bridge ###
 
-###> phpunit/phpunit ###
-/phpunit.xml
-.phpunit.result.cache
-###< phpunit/phpunit ###
+###> idea ###
 .idea
+###< idea  ###
+
+###> SQL Database ###
+config/wurondokiye.sql
+###< SQL Database ###
