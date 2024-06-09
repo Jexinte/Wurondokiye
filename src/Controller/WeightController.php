@@ -36,7 +36,7 @@ class WeightController extends AbstractController
         }
 
         return $this->render('weight/weight_graph.twig',[
-            'weights' => $weightRepository->findAll()
+            'weights' => $weightRepository->findAll(),
         ]);
     }
     #[Route('/ajouter-un-poids', name: 'addWeightPost',methods: ['POST'])]

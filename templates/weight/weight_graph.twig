@@ -30,10 +30,20 @@
                 <div>
                     <canvas id="myChart"></canvas>
                 </div>
-
-
-
             </div>
+                <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                    <h2 class="text-center">Informations relatives aux données</h2>
+                    {% for weight in weights|reverse %}
+                        <div class="box-description">
+                            <h3>{{ weight.dateFr }}</h3>
+                            {% if weight.description is empty %}
+                                <p>Aucune description n'est disponible à cette date</p>
+                            {% endif %}
+                            <p>{{ weight.description }}</p>
+                            {% endfor %}
+                        </div>
+                </div>
+
         </div>
     </section>
     {% block javascript %}

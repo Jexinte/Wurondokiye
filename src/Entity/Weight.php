@@ -26,6 +26,10 @@ class Weight
     #[Assert\Range(notInRangeMessage: 'Oops! Seuls les valeurs entre 1 et 2500 sont acceptées !',  min: 1, max: 2500)]
     private ?float $weight = null;
 
+    #[ORM\Column]
+    #[Assert\NotBlank(message: 'Ce champ ne peut-être vide !')]
+    private ?string $description;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -54,5 +58,15 @@ class Weight
         $this->weight = $weight;
 
         return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): void
+    {
+        $this->description = $description;
     }
 }
