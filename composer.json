@@ -56,7 +56,8 @@
             "cache:clear": "symfony-cmd",
             "assets:install %PUBLIC_DIR%": "symfony-cmd"
         },
-        "analyse" : "vendor/bin/phpstan analyse -l 6 src",
+        "analyse": "vendor/bin/phpstan analyse -l 6 src",
+        "s-serve": "symfony serve",
         "post-install-cmd": [
             "@auto-scripts"
         ],
